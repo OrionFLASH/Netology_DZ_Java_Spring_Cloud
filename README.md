@@ -92,6 +92,40 @@ mvn spring-boot:run -Dspring-boot.run.profiles=prod
 3. Перезапустить клиент с профилем `prod`.
 4. Проверить `/api/config/message` — `message` содержит «PROD», `activeProfiles`: `["prod"]`.
 
+### Автоматическая проверка
+
+```bash
+# Config Server должен быть запущен
+./spring-cloud-config/verify.sh
+```
+
+### Результаты проверки (24.05.2026)
+
+Все пункты задания проверены и выполнены:
+
+| Проверка | Результат |
+|----------|-----------|
+| Config Server: default / dev / prod | PASS |
+| Config Client: default / dev / prod | PASS |
+| Actuator health (server + client) | PASS |
+| Config Server в `/actuator/env` клиента | PASS |
+| `mvn test` (config-server, config-client) | PASS |
+
+Подробный отчёт: [`Docs/spring-cloud-config-verification.md`](Docs/spring-cloud-config-verification.md)
+
+## Соответствие заданию
+
+| Требование | Где реализовано |
+|------------|-----------------|
+| `spring-cloud-config-server` | `config-server/` |
+| Git-репозиторий конфигурации | `config-repo/` |
+| Подключение сервера к репозиторию | `config-server/src/main/resources/application.yml` |
+| HTTP-проверка на сервере | `http://localhost:8888/config-client/{profile}` |
+| `spring-cloud-starter-config` + `spring-boot-starter-web` | `config-client/pom.xml` |
+| Подключение клиента к серверу | `config-client/.../application.yml` |
+| Контроллер с параметром конфигурации | `ConfigController.getConfigMessage()` |
+| Профили dev / prod | `@Profile`, `config-client-dev.yml`, `config-client-prod.yml` |
+
 ## Технологии
 
 - Java 21
@@ -104,3 +138,4 @@ mvn spring-boot:run -Dspring-boot.run.profiles=prod
 | Версия | Описание |
 |--------|----------|
 | 1.0.0  | Spring Cloud Config Server, config-repo, config-client с профилями dev/prod |
+| 1.0.1  | Проверка работоспособности, отчёт о тестировании, скрипт verify.sh |

@@ -61,6 +61,15 @@ curl http://localhost:8080/api/config/message
 }
 ```
 
+## Проверка
+
+```bash
+# Быстрая проверка Config Server (должен быть запущен)
+./verify.sh
+```
+
+Результаты последней проверки (24.05.2026): **11/11 PASS** — см. [`Docs/spring-cloud-config-verification.md`](../Docs/spring-cloud-config-verification.md).
+
 ## Стек
 
 - Java 21
