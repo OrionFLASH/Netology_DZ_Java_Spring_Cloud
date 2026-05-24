@@ -41,3 +41,6 @@ log/
 
 # Env
 .env
+
+# Вложенный git-репозиторий config-repo (инициализируется локально скриптом)
+spring-cloud-config/config-repo/.git/

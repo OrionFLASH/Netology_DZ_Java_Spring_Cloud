@@ -1,0 +1,9 @@
+# Конфигурация для профиля prod
+# Активируется при spring.profiles.active=prod
+
+app:
+  message: "Конфигурация получена с Config Server (PROD)"
+  environment: production
+
+server:
+  port: 8080

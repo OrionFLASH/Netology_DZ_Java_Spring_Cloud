@@ -1,0 +1,9 @@
+# Конфигурация для профиля dev
+# Активируется при spring.profiles.active=dev
+
+app:
+  message: "Конфигурация получена с Config Server (DEV)"
+  environment: development
+
+server:
+  port: 8080
