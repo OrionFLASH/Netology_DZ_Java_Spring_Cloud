@@ -4,6 +4,16 @@ server:
 spring:
   application:
     name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          # Локальный git-репозиторий с конфигурацией клиентских приложений
+          uri: @config.repo.uri@
+          default-label: main
+          clone-on-start: true
+          # Для локального репозитория force-pull не требуется
+          force-pull: false
 
 management:
   endpoints:
