@@ -1,0 +1,4 @@
+# Локальные настройки профиля dev (дополнительно к config-client-dev.yml на Config Server)
+logging:
+  level:
+    ru.netology.configclient: DEBUG

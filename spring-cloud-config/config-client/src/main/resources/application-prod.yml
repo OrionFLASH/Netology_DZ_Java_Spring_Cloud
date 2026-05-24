@@ -1,0 +1,5 @@
+# Локальные настройки профиля prod (дополнительно к config-client-prod.yml на Config Server)
+logging:
+  level:
+    root: WARN
+    ru.netology.configclient: INFO
